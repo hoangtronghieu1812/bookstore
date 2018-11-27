@@ -42,10 +42,12 @@ class User < ApplicationRecord
 
   def like book
     favorite_books << book
+    book.update_attributes like: book.like + 1
   end
 
   def unlike book
     favorite_books.delete(book)
+    book.update_attributes like: book.like - 1
   end
 
   def liked? book

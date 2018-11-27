@@ -14,6 +14,8 @@ class OrdersController < ApplicationController
     @order = Order.new
     @payments = Payment.all
     @user= current_user
+    @items_id = []
+    @user.cart_items.each do |item| { @items_id << item.id }
   end
 
   def create
